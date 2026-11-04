@@ -61,6 +61,8 @@ do
   vim.o.splitright = true
   vim.o.splitbelow = true
 
+  vim.o.winborder = 'rounded'
+
   -- Sets how neovim will display certain whitespace characters in the editor.
   --  See `:help 'list'`
   --  and `:help 'listchars'`
@@ -163,7 +165,7 @@ do
   vim.api.nvim_create_autocmd('TextYankPost', {
     desc = 'Highlight when yanking (copying) text',
     group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
-    callback = function() vim.hl.on_yank() end,
+    callback = function() vim.hl.hl_op() end,
   })
 end
 
@@ -934,10 +936,10 @@ do
   --  Uncomment any of the lines below to enable them (you will need to restart nvim).
   --
   -- require 'kickstart.plugins.debug'
-   require 'kickstart.plugins.indent_line'
   -- require 'kickstart.plugins.lint'
-   require 'kickstart.plugins.autopairs'
-   require 'kickstart.plugins.neo-tree'
+  require 'kickstart.plugins.indent_line'
+  require 'kickstart.plugins.autopairs'
+  require 'kickstart.plugins.neo-tree'
 
   -- NOTE: You can add your own plugins, configuration, etc. in `lua/custom/plugins/*.lua`.
   --
@@ -952,6 +954,7 @@ do
   -- require 'custom.plugins.colorscheme'
   -- require 'custom.plugins.ui'
   -- require 'custom.plugins.git'
+  require 'custom.plugins.lualine'
 end
 
 -- The line beneath this is called `modeline`. See `:help modeline`
